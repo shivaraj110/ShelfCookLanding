@@ -1,62 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shelfcook.app/" />
+    <meta
+      property="og:title"
+      content=" ShelfCook - Your Smart Kitchen Manager and Recipe Planner"
+    />
+    <meta
+      property="og:description"
+      content="ShelfCook is a smart kitchen management app that helps you plan your meals, track your grocery list, and save time with your cooking."
+    />
+    <meta
+      property="og:image"
+      content="https://1d6kykqofq.ufs.sh/f/fVvo0hHNtQOL9KfQalM6YnpdASUvl073tkw42XEfuWoDzqc9"
+    />
+
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://shelfcook.app/" />
+    <meta
+      property="twitter:title"
+      content=" ShelfCook - Your Smart Kitchen Manager and Recipe Planner"
+    />
+    <meta
+      property="twitter:description"
+      content="ShelfCook is a smart kitchen management app that helps you plan your meals, track your grocery list, and save time with your cooking."
+    />
+    <meta
+      property="twitter:image"
+      content="https://1d6kykqofq.ufs.sh/f/fVvo0hHNtQOL9KfQalM6YnpdASUvl073tkw42XEfuWoDzqc9"
+    />
+
     <title>ShelfCook - Smart Meal Planning</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script>
       tailwind.config = {
-        darkMode: 'class',
+        darkMode: "class",
         theme: {
           extend: {
             fontFamily: {
-              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-              display: ['"Outfit"', 'sans-serif'],
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+              display: ['"Outfit"', "sans-serif"],
             },
             colors: {
               primary: {
-                50: '#fff7ed',
-                100: '#ffedd5',
-                200: '#fed7aa',
-                300: '#fdba74',
-                400: '#fb923c',
-                500: '#f97316', // Orange-500
-                600: '#ea580c',
-                700: '#c2410c',
+                50: "#fff7ed",
+                100: "#ffedd5",
+                200: "#fed7aa",
+                300: "#fdba74",
+                400: "#fb923c",
+                500: "#f97316", // Orange-500
+                600: "#ea580c",
+                700: "#c2410c",
               },
               stone: {
-                850: '#1c1917',
-                950: '#0c0a09', // Deep black-ish stone
-              }
+                850: "#1c1917",
+                950: "#0c0a09", // Deep black-ish stone
+              },
             },
             animation: {
-              'blob': 'blob 7s infinite',
-              'scroll': 'scroll 40s linear infinite',
-              'scroll-reverse': 'scroll-reverse 40s linear infinite',
+              blob: "blob 7s infinite",
+              scroll: "scroll 40s linear infinite",
+              "scroll-reverse": "scroll-reverse 40s linear infinite",
             },
             keyframes: {
               blob: {
-                '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
               },
               scroll: {
-                '0%': { transform: 'translateX(0)' },
-                '100%': { transform: 'translateX(-50%)' },
+                "0%": { transform: "translateX(0)" },
+                "100%": { transform: "translateX(-50%)" },
               },
-              'scroll-reverse': {
-                '0%': { transform: 'translateX(-50%)' },
-                '100%': { transform: 'translateX(0)' },
-              }
-            }
-          }
-        }
-      }
+              "scroll-reverse": {
+                "0%": { transform: "translateX(-50%)" },
+                "100%": { transform: "translateX(0)" },
+              },
+            },
+          },
+        },
+      };
     </script>
     <style>
       /* Custom scrollbar */
@@ -81,14 +120,22 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
-      
+
       /* Dot Backgrounds */
       .bg-dot-grid {
         background-size: 32px 32px;
-        background-image: radial-gradient(circle, rgba(0, 0, 0, 0.3) 1.5px, transparent 1.5px);
+        background-image: radial-gradient(
+          circle,
+          rgba(0, 0, 0, 0.3) 1.5px,
+          transparent 1.5px
+        );
       }
       .dark .bg-dot-grid {
-        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.5) 1.5px, transparent 1.5px);
+        background-image: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.5) 1.5px,
+          transparent 1.5px
+        );
       }
 
       /* Noise Texture */
@@ -96,22 +143,25 @@
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "framer-motion": "https://aistudiocdn.com/framer-motion@^11.3.8"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
-  <body class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-50 antialiased transition-colors duration-300">
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+          "react/": "https://aistudiocdn.com/react@^19.2.0/",
+          "react": "https://aistudiocdn.com/react@^19.2.0",
+          "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+          "framer-motion": "https://aistudiocdn.com/framer-motion@^11.3.8"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body
+    class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-50 antialiased transition-colors duration-300"
+  >
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
+
