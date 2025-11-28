@@ -1,0 +1,7 @@
+{
+  "name": "ShelfCook",
+  "description": "A modern, AI-powered recipe and meal planning application landing page.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
