@@ -96,13 +96,13 @@
               },
               float: {
                 "0%, 100%": { transform: "translateY(0) translateZ(0)", opacity: "0" },
-                "10%": { opacity: "0.4" },
-                "90%": { opacity: "0.4" },
-                "100%": { transform: "translateY(-100px) translateZ(0)", opacity: "0" },
+                "20%": { opacity: "0.3" },
+                "80%": { opacity: "0.3" },
+                "100%": { transform: "translateY(-120px) translateZ(0)", opacity: "0" },
               },
               "float-phone": {
                 "0%, 100%": { transform: "translateY(0) rotate(-6deg) translateZ(0)" },
-                "50%": { transform: "translateY(-10px) rotate(-4deg) translateZ(0)" },
+                "50%": { transform: "translateY(-12px) rotate(-5deg) translateZ(0)" },
               },
             },
           },
@@ -160,15 +160,14 @@
         transform: translateZ(0);
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
-        will-change: transform, opacity;
       }
 
       /* Fast fade-in animations using CSS instead of JS */
       .animate-fade-in {
-        animation: fadeIn 0.4s ease-out forwards;
+        animation: fadeIn 0.6s ease-out forwards;
       }
       .animate-fade-in-up {
-        animation: fadeInUp 0.5s ease-out forwards;
+        animation: fadeInUp 0.6s ease-out forwards;
       }
       @keyframes fadeIn {
         from { opacity: 0; }
@@ -181,42 +180,32 @@
 
       /* Optimized marquee animations */
       .animate-scroll, .animate-scroll-reverse {
-        will-change: transform;
         transform: translateZ(0);
         backface-visibility: hidden;
       }
 
-      /* Reduced motion for accessibility and performance */
+      /* Reduce motion for accessibility and performance */
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after {
           animation-duration: 0.01ms !important;
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
         }
-        .animate-scroll, .animate-scroll-reverse {
+        .animate-scroll, .animate-scroll-reverse, .animate-float, .animate-float-phone {
           animation: none !important;
         }
       }
 
-      /* Optimize blurred elements */
-      .blur-optimized {
-        transform: translateZ(0);
-        will-change: transform, opacity;
-      }
-
-      /* Optimize blur effects for performance on mobile */
+      /* Remove unused blur-optimized class */
       @media (max-width: 768px) {
-        .blur-\[120px\], .blur-\[100px\], .blur-\[80px\] {
-          filter: blur(40px) !important;
-        }
-        .blur-\[80px\] {
-          filter: blur(20px) !important;
+        .blur-\[120px\], .blur-\[100px\], .blur-\[80px\], .blur-\[60px\] {
+          filter: blur(30px) !important;
         }
       }
 
       /* Further reduce blur on very small screens */
       @media (max-width: 480px) {
-        .blur-\[120px\], .blur-\[100px\], .blur-\[80px\] {
+        .blur-\[120px\], .blur-\[100px\], .blur-\[80px\], .blur-\[60px\] {
           filter: blur(20px) !important;
         }
       }

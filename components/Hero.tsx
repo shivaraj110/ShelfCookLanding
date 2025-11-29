@@ -51,15 +51,17 @@ const Hero: React.FC = () => {
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-visible">
       {/* Minimal Ambient Particles - Desktop only */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 hidden md:block">
-        {[...Array(6)].map((_, i) => (
+        {[...Array(3)].map((_, i) => (
             <div
                 key={i}
-                className="absolute w-1.5 h-1.5 bg-orange-500/20 dark:bg-orange-400/30 rounded-full blur-[2px] animate-float gpu-accelerate"
+                className="absolute w-1.5 h-1.5 bg-orange-500/20 dark:bg-orange-400/30 rounded-full animate-float"
                 style={{
-                    left: `${15 + i * 15}%`,
-                    top: `${50 + (i % 3) * 15}%`,
-                    animationDelay: `${i * 2}s`,
-                    animationDuration: `${12 + i * 2}s`
+                    left: `${20 + i * 30}%`,
+                    top: `${50 + (i % 2) * 20}%`,
+                    animationDelay: `${i * 3}s`,
+                    animationDuration: `${15 + i * 3}s`,
+                    transform: 'translateZ(0)',
+                    willChange: 'auto'
                 }}
             />
         ))}
@@ -69,7 +71,7 @@ const Hero: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">
           
           {/* Text Content */}
-          <div className="max-w-2xl relative z-20 animate-fade-in">
+          <div className="max-w-2xl relative z-20 opacity-0" style={{ animation: 'fadeIn 0.6s ease-out 0.1s forwards' }}>
             <div className="inline-flex items-center space-x-2 bg-white/50 dark:bg-stone-900/50 backdrop-blur-md rounded-full px-4 py-1.5 border border-stone-200 dark:border-stone-800 mb-8 hover:border-orange-500/30 transition-colors">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
@@ -113,12 +115,12 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Interactive Phone Mockup & Floating Elements */}
-          <div className="relative lg:h-[800px] flex items-center justify-center perspective-[2000px] z-10 animate-fade-in-up">
+          <div className="relative lg:h-[800px] flex items-center justify-center perspective-[2000px] z-10 opacity-0" style={{ animation: 'fadeInUp 0.6s ease-out 0.2s forwards' }}>
             {/* Background Gradient Blob behind phone - Localized intensify */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-orange-500/30 to-stone-500/20 rounded-full blur-[80px] -z-10 animate-pulse"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-orange-500/20 to-stone-500/10 rounded-full blur-[60px] -z-10" style={{ animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}></div>
 
             {/* Floating Element 1: Shopping List */}
-            <div className="absolute top-20 left-0 md:-left-8 z-20 bg-white dark:bg-stone-800 p-4 rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-stone-100 dark:border-stone-700 w-48 hidden md:block gpu-accelerate">
+            <div className="absolute top-20 left-0 md:-left-8 z-20 bg-white dark:bg-stone-800 p-4 rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-stone-100 dark:border-stone-700 w-48 hidden md:block opacity-0" style={{ animation: 'fadeIn 0.6s ease-out 0.5s forwards', transform: 'translateZ(0)' }}>
                 <div className="flex items-center space-x-3 mb-3">
                     <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-full text-green-600 dark:text-green-400">
                         <ShoppingCart size={16} />
@@ -135,7 +137,7 @@ const Hero: React.FC = () => {
             </div>
 
              {/* Floating Element 2: Favorites */}
-             <div className="absolute bottom-40 right-0 md:-right-4 z-20 bg-white dark:bg-stone-800 p-4 rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-stone-100 dark:border-stone-700 w-40 hidden md:block gpu-accelerate">
+             <div className="absolute bottom-40 right-0 md:-right-4 z-20 bg-white dark:bg-stone-800 p-4 rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-stone-100 dark:border-stone-700 w-40 hidden md:block opacity-0" style={{ animation: 'fadeIn 0.6s ease-out 0.6s forwards', transform: 'translateZ(0)' }}>
                 <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold text-stone-900 dark:text-white">Saved</span>
                     <Heart size={14} className="fill-orange-500 text-orange-500" />
@@ -153,7 +155,7 @@ const Hero: React.FC = () => {
                 </div>
             </div>
 
-            <div className="animate-float-phone gpu-accelerate">
+            <div className="animate-float-phone" style={{ transform: 'translateZ(0)' }}>
                 <PhoneMockup className="shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] dark:shadow-black/60 border-stone-900 dark:border-stone-800">
                 {/* In-Phone App UI */}
                 <div className="bg-stone-50 dark:bg-stone-950 h-full flex flex-col font-sans">
@@ -256,12 +258,12 @@ const Hero: React.FC = () => {
                         </div>
                         </motion.div>
 
-                        {/* Quick Stats Bento */}
+                         {/* Quick Stats Bento */}
                         <div className="grid grid-cols-2 gap-3">
                              <motion.div
                              whileHover={shouldReduceMotion ? {} : { y: -2 }}
-                             transition={{ duration: 0.2, ease: "easeOut" }}
-                             className="bg-white dark:bg-stone-900 p-4 rounded-2xl shadow-sm border border-stone-200 dark:border-stone-800 gpu-accelerate"
+                             transition={{ duration: 0.15, ease: "easeOut" }}
+                             className="bg-white dark:bg-stone-900 p-4 rounded-2xl shadow-sm border border-stone-200 dark:border-stone-800"
                              >
                                 <p className="text-[10px] text-stone-400 font-bold uppercase mb-1 tracking-wider">Daily Goal</p>
                                 <div className="flex items-end space-x-1">
@@ -271,11 +273,11 @@ const Hero: React.FC = () => {
                                 <div className="w-full bg-stone-100 dark:bg-stone-800 h-1.5 rounded-full mt-2 overflow-hidden">
                                     <div className="bg-orange-500 h-full w-[70%] rounded-full"></div>
                                 </div>
-                            </motion.div>
+                             </motion.div>
                              <motion.div
                              whileHover={shouldReduceMotion ? {} : { y: -2 }}
-                             transition={{ duration: 0.2, ease: "easeOut" }}
-                             className="bg-white dark:bg-stone-900 p-4 rounded-2xl shadow-sm border border-stone-200 dark:border-stone-800 relative overflow-hidden gpu-accelerate"
+                             transition={{ duration: 0.15, ease: "easeOut" }}
+                             className="bg-white dark:bg-stone-900 p-4 rounded-2xl shadow-sm border border-stone-200 dark:border-stone-800 relative overflow-hidden"
                              >
                                 <p className="text-[10px] text-stone-400 font-bold uppercase mb-1 tracking-wider">Planned</p>
                                 <p className="text-xl font-display font-bold text-stone-900 dark:text-white">5 Meals</p>
@@ -297,8 +299,8 @@ const Hero: React.FC = () => {
                              <motion.div
                                  key={i}
                                  whileHover={shouldReduceMotion ? {} : { x: 3 }}
-                                 transition={{ duration: 0.2, ease: "easeOut" }}
-                                 className="group bg-white dark:bg-stone-900 p-2 rounded-2xl flex items-center space-x-3 shadow-sm border border-stone-200 dark:border-stone-800 hover:border-orange-500/30 transition-colors cursor-pointer gpu-accelerate"
+                                 transition={{ duration: 0.15, ease: "easeOut" }}
+                                 className="group bg-white dark:bg-stone-900 p-2 rounded-2xl flex items-center space-x-3 shadow-sm border border-stone-200 dark:border-stone-800 hover:border-orange-500/30 transition-colors cursor-pointer"
                              >
                                 <img src={item.img} alt={item.title} className="w-12 h-12 rounded-xl object-cover shadow-sm grayscale group-hover:grayscale-0 transition-all" />
                                 <div>
