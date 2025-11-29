@@ -49,19 +49,26 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-visible">
-      {/* Minimal Ambient Particles - Desktop only */}
+      {/* Ethereal Background Gradient Mesh */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-orange-400/20 via-amber-300/10 to-transparent rounded-full blur-[100px] animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-orange-500/15 via-transparent to-amber-400/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      {/* Subtle Floating Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 hidden md:block">
-        {[...Array(3)].map((_, i) => (
+        {[...Array(4)].map((_, i) => (
             <div
                 key={i}
-                className="absolute w-1.5 h-1.5 bg-orange-500/20 dark:bg-orange-400/30 rounded-full animate-float"
+                className="absolute w-2 h-2 rounded-full animate-float"
                 style={{
-                    left: `${20 + i * 30}%`,
-                    top: `${50 + (i % 2) * 20}%`,
-                    animationDelay: `${i * 3}s`,
-                    animationDuration: `${15 + i * 3}s`,
-                    transform: 'translateZ(0)',
-                    willChange: 'auto'
+                    background: `radial-gradient(circle, ${i % 2 === 0 ? 'rgba(251, 146, 60, 0.4)' : 'rgba(245, 158, 11, 0.3)'}, transparent)`,
+                    left: `${15 + i * 25}%`,
+                    top: `${40 + (i % 3) * 15}%`,
+                    animationDelay: `${i * 2}s`,
+                    animationDuration: `${20 + i * 4}s`,
+                    filter: 'blur(1px)',
+                    transform: 'translateZ(0)'
                 }}
             />
         ))}
@@ -72,45 +79,61 @@ const Hero: React.FC = () => {
           
           {/* Text Content */}
           <div className="max-w-2xl relative z-20 opacity-0" style={{ animation: 'fadeIn 0.6s ease-out 0.1s forwards' }}>
-            <div className="inline-flex items-center space-x-2 bg-white/50 dark:bg-stone-900/50 backdrop-blur-md rounded-full px-4 py-1.5 border border-stone-200 dark:border-stone-800 mb-8 hover:border-orange-500/30 transition-colors">
+            <div className="inline-flex items-center space-x-2 bg-white/60 dark:bg-stone-900/60 backdrop-blur-xl rounded-full px-5 py-2 border border-orange-200/40 dark:border-orange-900/40 mb-8 hover:border-orange-400/60 hover:bg-white/80 dark:hover:bg-stone-900/80 transition-all duration-300 shadow-sm">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-r from-orange-500 to-amber-500"></span>
               </span>
-              <span className="text-xs font-bold text-stone-600 dark:text-stone-300 tracking-wider uppercase">AI-Powered Kitchen Assistant</span>
+              <span className="text-xs font-bold text-stone-700 dark:text-stone-200 tracking-wider uppercase">AI-Powered Kitchen</span>
             </div>
             
-            <h1 className="text-6xl lg:text-[5.5rem] font-display font-bold text-stone-950 dark:text-white leading-[0.95] mb-8 tracking-tighter">
-              Cook with <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500 dark:from-orange-500 dark:to-amber-400">
-                Purpose.
+            <h1 className="text-6xl lg:text-[6rem] font-display font-bold text-stone-950 dark:text-white leading-[0.9] mb-8 tracking-[-0.02em]">
+              Cook with{' '}
+              <span className="relative inline-block">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-500 dark:to-amber-400 animate-gradient">
+                  Purpose
+                </span>
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-500 dark:to-amber-400 rounded-full transform origin-left animate-expand-line"></span>
               </span>
             </h1>
             
-            <p className="text-xl text-stone-600 dark:text-stone-400 mb-10 leading-relaxed font-light max-w-lg">
-              Transform your pantry ingredients into chef-quality meals. 
-              The intelligent way to shop, cook, and eat without the waste.
+            <p className="text-xl text-stone-600 dark:text-stone-300 mb-12 leading-relaxed font-light max-w-xl">
+              Transform your pantry into chef-quality meals. AI-powered meal planning, 
+              smart shopping, and zero-waste cooking—all in your pocket.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 mb-14">
               <a 
                 href="#download" 
-                className="group inline-flex justify-center items-center px-8 py-4 bg-stone-950 dark:bg-white text-white dark:text-stone-950 rounded-full font-bold text-lg hover:bg-orange-600 dark:hover:bg-orange-500 dark:hover:text-white transition-all duration-200 shadow-xl shadow-stone-900/10 active:scale-95"
+                className="group relative inline-flex justify-center items-center px-9 py-4.5 bg-gradient-to-r from-orange-600 to-amber-500 text-white rounded-full font-bold text-lg overflow-hidden shadow-[0_20px_60px_-15px_rgba(251,146,60,0.5)] hover:shadow-[0_20px_80px_-15px_rgba(251,146,60,0.7)] transition-all duration-300 active:scale-95"
               >
-                Get App
-                <ArrowUpRight className="ml-2 h-5 w-5 group-hover:rotate-45 transition-transform duration-200" />
+                <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="relative z-10">Get Started Free</span>
+                <ArrowUpRight className="relative z-10 ml-2 h-5 w-5 group-hover:rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </a>
               <button 
-                className="inline-flex justify-center items-center px-8 py-4 bg-transparent text-stone-900 dark:text-white border border-stone-200 dark:border-stone-800 rounded-full font-semibold text-lg hover:bg-stone-100 dark:hover:bg-stone-900/50 backdrop-blur-sm transition-colors active:scale-95"
+                className="inline-flex justify-center items-center px-9 py-4.5 bg-white/80 dark:bg-stone-900/80 text-stone-900 dark:text-white border border-stone-300/50 dark:border-stone-700/50 rounded-full font-semibold text-lg hover:bg-white dark:hover:bg-stone-900 hover:border-stone-400 dark:hover:border-stone-600 backdrop-blur-xl transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
               >
                 <PlayCircle className="mr-2 h-5 w-5 text-orange-500" />
-                See Action
+                Watch Demo
               </button>
             </div>
 
-            <div className="flex items-center space-x-8 text-stone-500 dark:text-stone-500 font-medium text-sm border-t border-stone-200/50 dark:border-stone-800/50 pt-8 max-w-md">
-              <div className="flex items-center"><CheckCircle2 className="h-4 w-4 mr-2 text-orange-500" /> iOS & Android</div>
-              <div className="flex items-center"><CheckCircle2 className="h-4 w-4 mr-2 text-orange-500" /> Free Tier Available</div>
+            <div className="flex items-center gap-6 text-stone-500 dark:text-stone-400 font-medium text-sm">
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 rounded-full border-2 border-white dark:border-stone-900 bg-gradient-to-br from-orange-400 to-amber-400"></div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white dark:border-stone-900 bg-gradient-to-br from-orange-500 to-amber-500"></div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white dark:border-stone-900 bg-gradient-to-br from-orange-600 to-amber-600"></div>
+                </div>
+                <span className="text-stone-600 dark:text-stone-300 font-semibold">10k+ happy cooks</span>
+              </div>
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-4 h-4 fill-orange-500" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                ))}
+                <span className="ml-1 font-semibold text-stone-600 dark:text-stone-300">4.9</span>
+              </div>
             </div>
           </div>
 

@@ -139,32 +139,32 @@ const Features: React.FC = () => {
             whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="group md:col-span-2 relative bg-stone-900 dark:bg-stone-950 rounded-[2rem] p-8 overflow-hidden border border-stone-800 hover:border-stone-700 transition-colors"
+            className="group md:col-span-2 relative bg-white dark:bg-stone-950 rounded-[2rem] p-8 overflow-hidden border border-stone-200 dark:border-stone-800 hover:border-orange-500/30 dark:hover:border-stone-700 transition-colors"
           >
             <div className="relative z-10">
-              <div className="mb-6 p-3 bg-stone-800 rounded-2xl w-fit">
-                <ShoppingListIcon className="w-6 h-6 text-orange-400" strokeWidth={1.5} />
+              <div className="mb-6 p-3 bg-orange-50 dark:bg-stone-800 rounded-2xl w-fit">
+                <ShoppingListIcon className="w-6 h-6 text-orange-600 dark:text-orange-400" strokeWidth={1.5} />
               </div>
               
-              <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">
+              <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-3 tracking-tight">
                 {FEATURES[2].title}
               </h3>
-              <p className="text-sm text-stone-400 leading-relaxed mb-6">
+              <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed mb-6">
                 {FEATURES[2].description}
               </p>
 
               {/* Shopping Items */}
               <div className="space-y-2">
                 {['Tomatoes', 'Olive Oil', 'Pasta'].map((item, i) => (
-                  <div key={item} className="flex items-center space-x-3 text-stone-300">
-                    <div className="w-5 h-5 rounded border-2 border-stone-700"></div>
+                  <div key={item} className="flex items-center space-x-3 text-stone-700 dark:text-stone-300">
+                    <div className="w-5 h-5 rounded border-2 border-stone-300 dark:border-stone-700"></div>
                     <span className="text-sm">{item}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-8 p-3 bg-stone-800 rounded-full ml-auto w-fit group-hover:bg-stone-700 transition-colors">
-                <ArrowUpRight className="w-5 h-5 text-white group-hover:rotate-45 transition-transform duration-300" />
+              <div className="mt-8 p-3 bg-stone-100 dark:bg-stone-800 rounded-full ml-auto w-fit group-hover:bg-orange-500 transition-colors">
+                <ArrowUpRight className="w-5 h-5 text-stone-900 dark:text-white group-hover:text-white group-hover:rotate-45 transition-all duration-300" />
               </div>
             </div>
           </motion.div>
@@ -254,38 +254,38 @@ const Features: React.FC = () => {
             whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="group md:col-span-2 relative bg-gradient-to-br from-stone-900 to-stone-950 dark:from-stone-950 dark:to-black rounded-[2rem] p-8 overflow-hidden border border-stone-800"
+            className="group md:col-span-2 relative bg-gradient-to-br from-stone-50 to-stone-100 dark:from-stone-950 dark:to-black rounded-[2rem] p-8 overflow-hidden border border-stone-200 dark:border-stone-800"
           >
             <div className="relative z-10">
-              <div className="mb-6 p-3 bg-stone-800 rounded-2xl w-fit">
-                <CookModeIcon className="w-6 h-6 text-orange-400" strokeWidth={1.5} />
+              <div className="mb-6 p-3 bg-white dark:bg-stone-800 rounded-2xl w-fit shadow-sm">
+                <CookModeIcon className="w-6 h-6 text-orange-600 dark:text-orange-400" strokeWidth={1.5} />
               </div>
               
-              <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">
+              <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-3 tracking-tight">
                 {FEATURES[5].title}
               </h3>
-              <p className="text-sm text-stone-400 leading-relaxed mb-6">
+              <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed mb-6">
                 {FEATURES[5].description}
               </p>
 
               {/* Timer Display */}
-              <div className="bg-stone-800/50 backdrop-blur-sm rounded-2xl p-6 border border-stone-700">
+              <div className="bg-white dark:bg-stone-800/50 backdrop-blur-sm rounded-2xl p-6 border border-stone-200 dark:border-stone-700 shadow-sm">
                 <div className="text-center">
-                  <div className="text-4xl font-display font-bold text-white mb-2">12:45</div>
-                  <div className="flex items-center justify-center space-x-2 text-orange-400">
-                    <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></div>
+                  <div className="text-4xl font-display font-bold text-stone-900 dark:text-white mb-2">12:45</div>
+                  <div className="flex items-center justify-center space-x-2 text-orange-500 dark:text-orange-400">
+                    <div className="w-2 h-2 rounded-full bg-orange-500 dark:bg-orange-400 animate-pulse"></div>
                     <span className="text-xs font-medium">In Progress</span>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-6 p-3 bg-stone-800 rounded-full ml-auto w-fit group-hover:bg-orange-500 transition-colors">
-                <ArrowUpRight className="w-5 h-5 text-white group-hover:rotate-45 transition-transform duration-300" />
+              <div className="mt-6 p-3 bg-white dark:bg-stone-800 rounded-full ml-auto w-fit group-hover:bg-orange-500 transition-colors shadow-sm">
+                <ArrowUpRight className="w-5 h-5 text-stone-900 dark:text-white group-hover:text-white group-hover:rotate-45 transition-all duration-300" />
               </div>
             </div>
 
             {/* Glow Effect */}
-            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-orange-500/10 dark:bg-orange-500/10 rounded-full blur-3xl"></div>
           </motion.div>
 
         </div>
