@@ -3,8 +3,7 @@ import { Star, Quote } from 'lucide-react';
 import { TESTIMONIALS } from '../constants';
 import { motion } from 'framer-motion';
 
-// Duplicate testimonials to create a seamless loop
-const SCROLL_TESTIMONIALS = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
+const SCROLL_TESTIMONIALS = [...TESTIMONIALS, ...TESTIMONIALS];
 
 const Testimonials: React.FC = () => {
   return (
@@ -45,16 +44,20 @@ const Testimonials: React.FC = () => {
           <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 z-20 bg-gradient-to-l from-stone-50 dark:from-stone-950 to-transparent pointer-events-none"></div>
 
           {/* Scrolling Row 1 */}
-          <div className="flex w-max space-x-8 animate-scroll hover:pause py-4">
+          <div className="flex w-max space-x-8 animate-scroll py-4 gpu-accelerate">
               {SCROLL_TESTIMONIALS.map((testimonial, i) => (
-                  <TestimonialCard key={`${testimonial.id}-1-${i}`} testimonial={testimonial} />
+                  <div key={`${testimonial.id}-1-${i}`}>
+                    <TestimonialCard testimonial={testimonial} />
+                  </div>
               ))}
           </div>
-          
+
           {/* Scrolling Row 2 (Reverse) */}
-          <div className="flex w-max space-x-8 animate-scroll-reverse hover:pause py-4 mt-4">
+          <div className="flex w-max space-x-8 animate-scroll-reverse py-4 mt-4 gpu-accelerate">
               {SCROLL_TESTIMONIALS.map((testimonial, i) => (
-                  <TestimonialCard key={`${testimonial.id}-2-${i}`} testimonial={testimonial} />
+                  <div key={`${testimonial.id}-2-${i}`}>
+                    <TestimonialCard testimonial={testimonial} />
+                  </div>
               ))}
           </div>
       </div>
@@ -62,14 +65,14 @@ const Testimonials: React.FC = () => {
   );
 };
 
-const TestimonialCard = ({ testimonial }: { testimonial: any }) => (
-    <div className="w-[350px] md:w-[450px] bg-white dark:bg-stone-900 p-8 rounded-[2rem] border border-stone-200 dark:border-stone-800 shadow-[0_2px_20px_rgba(0,0,0,0.04)] dark:shadow-none flex-shrink-0 hover:border-orange-500/30 transition-colors">
+const TestimonialCard = ({ testimonial }: { testimonial: typeof TESTIMONIALS[0] }) => (
+    <div className="w-[350px] md:w-[450px] bg-white dark:bg-stone-900 p-8 rounded-[2rem] border border-stone-200 dark:border-stone-800 shadow-[0_2px_20px_rgba(0,0,0,0.04)] dark:shadow-none flex-shrink-0 hover:border-orange-500/30 transition-colors gpu-accelerate">
         <div className="mb-6 text-orange-500/30">
             <Quote className="w-8 h-8 fill-current" />
         </div>
         <p className="text-stone-700 dark:text-stone-300 text-lg mb-8 leading-relaxed font-medium">"{testimonial.content}"</p>
         <div className="flex items-center space-x-4 pt-4 border-t border-stone-100 dark:border-stone-800">
-            <img src={testimonial.avatar} alt={testimonial.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-stone-100 dark:ring-stone-800" />
+            <img src={testimonial.avatar} alt={testimonial.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-stone-100 dark:ring-stone-800" loading="lazy" />
             <div>
             <h4 className="font-bold text-stone-900 dark:text-white text-sm">{testimonial.name}</h4>
             <p className="text-xs text-stone-500 dark:text-stone-500 uppercase tracking-wide font-bold">{testimonial.role}</p>

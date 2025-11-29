@@ -1,18 +1,17 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { FEATURES } from '../constants';
 import { Search, ScanLine, ArrowUpRight } from 'lucide-react';
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+import { motion, useMotionTemplate, useMotionValue, useReducedMotion } from 'framer-motion';
 
 const Features: React.FC = () => {
-  // Define grid spans for a true bento layout
   const getBentoClasses = (index: number) => {
     switch (index) {
-      case 0: return 'md:col-span-2 md:row-span-1'; // Wide
-      case 1: return 'md:col-span-1 md:row-span-2'; // Tall
-      case 2: return 'md:col-span-1 md:row-span-1'; // Standard
-      case 3: return 'md:col-span-1 md:row-span-1'; // Standard
-      case 4: return 'md:col-span-2 md:row-span-1'; // Wide
-      case 5: return 'md:col-span-1 md:row-span-1'; // Standard
+      case 0: return 'md:col-span-2 md:row-span-1';
+      case 1: return 'md:col-span-1 md:row-span-2';
+      case 2: return 'md:col-span-1 md:row-span-1';
+      case 3: return 'md:col-span-1 md:row-span-1';
+      case 4: return 'md:col-span-2 md:row-span-1';
+      case 5: return 'md:col-span-1 md:row-span-1';
       default: return 'md:col-span-1';
     }
   };
@@ -25,7 +24,7 @@ const Features: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="text-4xl md:text-7xl font-display font-bold text-stone-900 dark:text-white mb-6 tracking-tighter"
           >
             Designed for the <br />
@@ -35,7 +34,7 @@ const Features: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="text-xl text-stone-600 dark:text-stone-400 leading-relaxed font-light max-w-2xl"
           >
             A suite of powerful tools carefully crafted to make your cooking experience seamless, enjoyable, and virtually waste-free.
@@ -44,12 +43,13 @@ const Features: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 grid-flow-dense group/bento">
           {FEATURES.map((feature, index) => (
-            <SpotlightCard 
-                key={feature.id} 
-                feature={feature} 
-                index={index} 
-                className={getBentoClasses(index)}
-            />
+            <div key={feature.id}>
+              <SpotlightCard
+                  feature={feature}
+                  index={index}
+                  className={getBentoClasses(index)}
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -57,16 +57,21 @@ const Features: React.FC = () => {
   );
 };
 
-// Spotlight Card Component
-const SpotlightCard = ({ feature, index, className }: { feature: any, index: number, className: string }) => {
+const SpotlightCard = ({ feature, index, className }: { feature: typeof FEATURES[0], index: number, className: string }) => {
+    const shouldReduceMotion = useReducedMotion();
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-        const { left, top } = currentTarget.getBoundingClientRect();
-        mouseX.set(clientX - left);
-        mouseY.set(clientY - top);
-    }
+    // Throttle mouse move updates for better performance
+    const handleMouseMove = React.useCallback(
+        ({ currentTarget, clientX, clientY }: React.MouseEvent) => {
+            if (shouldReduceMotion) return;
+            const { left, top } = currentTarget.getBoundingClientRect();
+            mouseX.set(clientX - left);
+            mouseY.set(clientY - top);
+        },
+        [shouldReduceMotion, mouseX, mouseY]
+    );
 
     const isDark = index === 0;
     const isBrand = index === 1;
@@ -76,23 +81,23 @@ const SpotlightCard = ({ feature, index, className }: { feature: any, index: num
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
             className={`
-                group relative border rounded-[2.5rem] overflow-hidden 
+                group relative border rounded-[2.5rem] overflow-hidden gpu-accelerate
                 ${className}
                 ${isBrand ? 'bg-orange-500 border-orange-400' : isDark ? 'bg-stone-900 border-stone-800' : 'bg-white/50 dark:bg-stone-900/50 border-stone-200 dark:border-stone-800'}
             `}
             onMouseMove={handleMouseMove}
         >
-            {/* Spotlight Overlay */}
-            {!isBrand && (
+            {/* Spotlight Overlay - Desktop only */}
+            {!isBrand && !shouldReduceMotion && (
                 <motion.div
-                    className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100 z-30"
+                    className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100 z-30 hidden md:block gpu-accelerate"
                     style={{
                         background: useMotionTemplate`
                             radial-gradient(
-                                650px circle at ${mouseX}px ${mouseY}px,
-                                ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(249, 115, 22, 0.15)'},
+                                450px circle at ${mouseX}px ${mouseY}px,
+                                ${isDark ? 'rgba(255,255,255,0.08)' : 'rgba(249, 115, 22, 0.12)'},
                                 transparent 80%
                             )
                         `,

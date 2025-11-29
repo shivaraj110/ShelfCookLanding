@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         setIsDark(true);
@@ -33,12 +33,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/70 dark:bg-stone-950/70 backdrop-blur-xl border-b border-stone-200/50 dark:border-stone-800/50 py-4' : 'bg-transparent py-6'}`}
-    >
+    <nav className={`fixed w-full z-50 transition-all duration-200 gpu-accelerate ${isScrolled ? 'bg-white/70 dark:bg-stone-950/70 backdrop-blur-xl border-b border-stone-200/50 dark:border-stone-800/50 py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-2">
@@ -70,14 +65,12 @@ const Navbar: React.FC = () => {
                 >
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
                 </button>
-                <motion.a 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <a 
                   href="#download" 
-                  className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-6 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity shadow-lg shadow-stone-900/10 dark:shadow-white/10"
+                  className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-6 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity shadow-lg shadow-stone-900/10 dark:shadow-white/10 active:scale-95"
                 >
                   Get App
-                </motion.a>
+                </a>
             </div>
           </div>
 
@@ -103,11 +96,11 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
             <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white/95 dark:bg-stone-900/95 backdrop-blur-xl absolute top-full left-0 w-full border-t border-stone-100 dark:border-stone-800 shadow-2xl overflow-hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-white/95 dark:bg-stone-900/95 backdrop-blur-xl absolute top-full left-0 w-full border-t border-stone-100 dark:border-stone-800 shadow-2xl overflow-hidden gpu-accelerate"
             >
             <div className="px-6 py-8 space-y-4">
                 {navLinks.map((link) => (
@@ -133,7 +126,7 @@ const Navbar: React.FC = () => {
             </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 };
 

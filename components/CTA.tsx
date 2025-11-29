@@ -1,5 +1,5 @@
 import React from 'react';
-import { Apple, Smartphone, Check, Star } from 'lucide-react';
+import { Check, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const CTA: React.FC = () => {
@@ -7,16 +7,16 @@ const CTA: React.FC = () => {
     <section id="download" className="py-32 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="relative rounded-[3rem] overflow-hidden bg-stone-950 text-white shadow-2xl isolate border border-stone-800/50 text-center group"
         >
-            {/* Background Gradients */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-orange-500/20 rounded-full blur-[120px] opacity-40 pointer-events-none group-hover:opacity-50 transition-opacity duration-700"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px] opacity-30 pointer-events-none"></div>
-            <div className="absolute top-0 right-0 w-96 h-96 bg-orange-600/10 rounded-full blur-[100px] opacity-30 pointer-events-none"></div>
+            {/* Background Gradients - Simplified */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-orange-500/20 rounded-full blur-[80px] opacity-40 pointer-events-none gpu-accelerate"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/10 rounded-full blur-[60px] opacity-30 pointer-events-none hidden md:block"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600/10 rounded-full blur-[60px] opacity-30 pointer-events-none hidden md:block"></div>
             
             {/* Pattern Overlay */}
              <div className="absolute inset-0 bg-noise opacity-[0.05] pointer-events-none"></div>
@@ -27,7 +27,7 @@ const CTA: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.1, duration: 0.4 }}
                     className="inline-flex items-center space-x-2 mb-10 bg-white/5 border border-white/10 rounded-full px-5 py-2 backdrop-blur-sm"
                 >
                     <Star className="w-4 h-4 text-orange-400 fill-orange-400" />
@@ -47,21 +47,21 @@ const CTA: React.FC = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto justify-center mb-16">
-                        <button className="group flex items-center justify-center gap-4 bg-white text-stone-950 px-8 py-5 rounded-2xl font-bold hover:bg-stone-200 transition-all shadow-xl shadow-white/5 hover:scale-105 active:scale-95">
-                        <Apple className="w-8 h-8 fill-current" />
-                        <div className="text-left">
-                            <div className="text-[10px] uppercase font-bold text-stone-500 leading-none mb-1.5">Download on the</div>
-                            <div className="text-lg leading-none font-display">App Store</div>
-                        </div>
-                        </button>
+                        <a href="#" className="group flex items-center justify-center bg-white text-stone-950 rounded-2xl font-bold hover:bg-stone-200 transition-all shadow-xl shadow-white/5 active:scale-95 gpu-accelerate overflow-hidden">
+                          <img 
+                            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+                            alt="Download on the App Store" 
+                            className="h-16"
+                          />
+                        </a>
                         
-                        <button className="group flex items-center justify-center gap-4 bg-stone-900 text-white border border-stone-800 px-8 py-5 rounded-2xl font-bold hover:bg-stone-800 transition-all hover:scale-105 active:scale-95">
-                        <Smartphone className="w-8 h-8 text-stone-400 group-hover:text-white transition-colors" />
-                        <div className="text-left">
-                            <div className="text-[10px] uppercase font-bold text-stone-500 leading-none mb-1.5">Get it on</div>
-                            <div className="text-lg leading-none font-display">Google Play</div>
-                        </div>
-                        </button>
+                        <a href="#" className="group flex items-center justify-center bg-stone-900 text-white border border-stone-800 rounded-2xl font-bold hover:bg-stone-800 transition-all active:scale-95 gpu-accelerate overflow-hidden">
+                          <img 
+                            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+                            alt="Get it on Google Play" 
+                            className="h-16"
+                          />
+                        </a>
                 </div>
                 
                 <div className="pt-10 border-t border-white/5 w-full flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-stone-500 font-medium">

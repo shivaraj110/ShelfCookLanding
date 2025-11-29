@@ -13,6 +13,7 @@ const HowItWorks: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
             className="inline-block mb-4"
           >
              <div className="flex items-center justify-center space-x-2 bg-stone-100 dark:bg-stone-900/50 border border-stone-200 dark:border-stone-800 rounded-full px-4 py-1.5 backdrop-blur-sm">
@@ -28,7 +29,7 @@ const HowItWorks: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
             className="text-5xl md:text-7xl font-display font-bold text-stone-900 dark:text-white mb-8 tracking-tighter"
           >
             Simplicity is the <br/>
@@ -39,7 +40,7 @@ const HowItWorks: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
             className="text-xl text-stone-500 dark:text-stone-400 font-light"
           >
             Streamlined for your busy life. No clutter, just cooking.
@@ -51,14 +52,14 @@ const HowItWorks: React.FC = () => {
             {HOW_IT_WORKS_STEPS.map((step, index) => (
                 <motion.div 
                     key={step.id}
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.7, delay: index * 0.2 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
                     className="relative z-10 group"
                 >
                     {/* Card Container */}
-                    <div className="bg-white/40 dark:bg-stone-900/40 backdrop-blur-xl border border-stone-100 dark:border-stone-800 rounded-[2.5rem] p-6 transition-all duration-500 hover:bg-white/80 dark:hover:bg-stone-900/80 hover:shadow-2xl hover:shadow-orange-500/5 hover:-translate-y-2 h-full flex flex-col">
+                    <div className="bg-white/40 dark:bg-stone-900/40 backdrop-blur-xl border border-stone-100 dark:border-stone-800 rounded-[2.5rem] p-6 transition-all duration-300 hover:bg-white/80 dark:hover:bg-stone-900/80 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col gpu-accelerate">
                         
                         {/* Image */}
                         <div className="mb-8 rounded-[2rem] overflow-hidden aspect-[4/3] relative shadow-sm">
@@ -66,7 +67,8 @@ const HowItWorks: React.FC = () => {
                              <img 
                                 src={step.image} 
                                 alt={step.title} 
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                loading="lazy"
                              />
                              {/* Floating Number Badge inside image */}
                              <div className="absolute top-4 left-4 w-12 h-12 bg-white/90 dark:bg-stone-950/90 backdrop-blur-md rounded-2xl flex items-center justify-center border border-stone-200 dark:border-stone-800 z-20 shadow-lg">
