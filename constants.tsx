@@ -39,7 +39,7 @@ export const FEATURES: Feature[] = [
   {
     id: 'recipe-scan',
     title: 'Scan & Import',
-    description: 'Snap a photo of any recipe book or paste a URL to import it instantly.',
+    description: 'Snap a photo of ingredients from receipts or shelves to add them to your pantry instantly.',
     icon: ScanLine,
   },
   {
