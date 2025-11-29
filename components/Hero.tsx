@@ -105,16 +105,16 @@ const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 mb-14">
               <a 
                 href="#download" 
-                className="group relative inline-flex justify-center items-center px-9 py-4.5 bg-gradient-to-r from-orange-600 to-amber-500 text-white rounded-full font-bold text-lg overflow-hidden shadow-[0_20px_60px_-15px_rgba(251,146,60,0.5)] hover:shadow-[0_20px_80px_-15px_rgba(251,146,60,0.7)] transition-all duration-300 active:scale-95"
+                className="group relative inline-flex justify-center items-center px-8 py-4 bg-gradient-to-r from-orange-600 to-amber-500 text-white rounded-2xl font-bold text-base overflow-hidden shadow-lg hover:shadow-xl hover:shadow-orange-500/30 transition-all duration-300 active:scale-[0.98]"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative z-10">Get Started Free</span>
                 <ArrowUpRight className="relative z-10 ml-2 h-5 w-5 group-hover:rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </a>
               <button 
-                className="inline-flex justify-center items-center px-9 py-4.5 bg-white/80 dark:bg-stone-900/80 text-stone-900 dark:text-white border border-stone-300/50 dark:border-stone-700/50 rounded-full font-semibold text-lg hover:bg-white dark:hover:bg-stone-900 hover:border-stone-400 dark:hover:border-stone-600 backdrop-blur-xl transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
+                className="group inline-flex justify-center items-center px-8 py-4 bg-white dark:bg-stone-900 text-stone-900 dark:text-white border-2 border-stone-200 dark:border-stone-800 rounded-2xl font-semibold text-base hover:border-orange-500/50 dark:hover:border-orange-500/50 hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-all duration-300 shadow-sm active:scale-[0.98]"
               >
-                <PlayCircle className="mr-2 h-5 w-5 text-orange-500" />
+                <PlayCircle className="mr-2 h-5 w-5 text-orange-500 group-hover:scale-110 transition-transform duration-300" />
                 Watch Demo
               </button>
             </div>
