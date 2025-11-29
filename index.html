@@ -17,7 +17,7 @@
     />
     <meta
       property="og:image"
-      content="https://1d6kykqofq.ufs.sh/f/fVvo0hHNtQOL9KfQalM6YnpdASUvl073tkw42XEfuWoDzqc9"
+      content="https://1d6kykqofq.ufs.sh/f/fVvo0hHNtQOLNZ1aB6na1MmC3VPhpcwZk9gTuqOQ7yBGEosJ"
     />
 
     <meta property="og:image:width" content="1200" />
@@ -36,7 +36,7 @@
     />
     <meta
       property="twitter:image"
-      content="https://1d6kykqofq.ufs.sh/f/fVvo0hHNtQOL9KfQalM6YnpdASUvl073tkw42XEfuWoDzqc9"
+      content="https://1d6kykqofq.ufs.sh/f/fVvo0hHNtQOLNZ1aB6na1MmC3VPhpcwZk9gTuqOQ7yBGEosJ"
     />
 
     <title>ShelfCook - Smart Meal Planning</title>
@@ -97,14 +97,24 @@
                 "100%": { transform: "translateX(0)" },
               },
               float: {
-                "0%, 100%": { transform: "translateY(0) translateZ(0)", opacity: "0" },
+                "0%, 100%": {
+                  transform: "translateY(0) translateZ(0)",
+                  opacity: "0",
+                },
                 "20%": { opacity: "0.3" },
                 "80%": { opacity: "0.3" },
-                "100%": { transform: "translateY(-120px) translateZ(0)", opacity: "0" },
+                "100%": {
+                  transform: "translateY(-120px) translateZ(0)",
+                  opacity: "0",
+                },
               },
               "float-phone": {
-                "0%, 100%": { transform: "translateY(0) rotate(-6deg) translateZ(0)" },
-                "50%": { transform: "translateY(-12px) rotate(-5deg) translateZ(0)" },
+                "0%, 100%": {
+                  transform: "translateY(0) rotate(-6deg) translateZ(0)",
+                },
+                "50%": {
+                  transform: "translateY(-12px) rotate(-5deg) translateZ(0)",
+                },
               },
               gradient: {
                 "0%, 100%": { backgroundPosition: "0% 50%" },
@@ -181,12 +191,22 @@
         animation: fadeInUp 0.6s ease-out forwards;
       }
       @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
       @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px) translateZ(0); }
-        to { opacity: 1; transform: translateY(0) translateZ(0); }
+        from {
+          opacity: 0;
+          transform: translateY(20px) translateZ(0);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) translateZ(0);
+        }
       }
 
       /* Gradient animation for text */
@@ -195,8 +215,13 @@
         animation: gradient 4s ease infinite;
       }
       @keyframes gradient {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
       }
 
       /* Line expand animation */
@@ -204,39 +229,59 @@
         animation: expand-line 1.2s ease-out forwards;
       }
       @keyframes expand-line {
-        0% { transform: scaleX(0); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: scaleX(1); opacity: 1; }
+        0% {
+          transform: scaleX(0);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
       }
 
       /* Optimized marquee animations */
-      .animate-scroll, .animate-scroll-reverse {
+      .animate-scroll,
+      .animate-scroll-reverse {
         transform: translateZ(0);
         backface-visibility: hidden;
       }
 
       /* Reduce motion for accessibility and performance */
       @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
           animation-duration: 0.01ms !important;
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
         }
-        .animate-scroll, .animate-scroll-reverse, .animate-float, .animate-float-phone {
+        .animate-scroll,
+        .animate-scroll-reverse,
+        .animate-float,
+        .animate-float-phone {
           animation: none !important;
         }
       }
 
       /* Remove unused blur-optimized class */
       @media (max-width: 768px) {
-        .blur-\[120px\], .blur-\[100px\], .blur-\[80px\], .blur-\[60px\] {
+        .blur-\[120px\],
+        .blur-\[100px\],
+        .blur-\[80px\],
+        .blur-\[60px\] {
           filter: blur(30px) !important;
         }
       }
 
       /* Further reduce blur on very small screens */
       @media (max-width: 480px) {
-        .blur-\[120px\], .blur-\[100px\], .blur-\[80px\], .blur-\[60px\] {
+        .blur-\[120px\],
+        .blur-\[100px\],
+        .blur-\[80px\],
+        .blur-\[60px\] {
           filter: blur(20px) !important;
         }
       }
@@ -262,4 +307,3 @@
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
-
